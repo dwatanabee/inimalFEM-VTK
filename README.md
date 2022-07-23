@@ -3,11 +3,11 @@
 is a simple FEM code.  
 This code is based on [MinimalFEM](https://github.com/podgorskiy/MinimalFEM/)([Tutorial](http://podgorskiy.com/spblog/304/writing-a-fem-solver-in-less-the-180-lines-of-code)), so this code is also MIT license.  
 
-# How to use
+# usage
 
 1 command "make" in minimalFEM-VTK/
 ```
-make
+make -j
 ```
 
 2 execute with the below command  

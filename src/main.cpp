@@ -131,7 +131,6 @@ int main(int argc, char *argv[])
 
   puts("fix matrix");
   applyConstraint(globalK, node, load);
-  cout << globalK << endl;
   puts("solve Ku=f");
   SimplicialLDLT<SparseMatrix<double>> solver;
   solver.compute(globalK);

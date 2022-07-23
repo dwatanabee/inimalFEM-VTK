@@ -24,10 +24,12 @@ struct Node
 class Element
 {
 public:
+  // make element stiffness matrix's triplets
   void stiffnessMatrix(int ndim, int voigt, const Eigen::MatrixXd &D,
                        std::vector<Eigen::Triplet<double>> &triplets,
                        std::vector<Node> &nodes);
 
+  // return element-wise mises stress
   double misesStress(int ndim, int voigt, const Eigen::MatrixXd &D,
                      std::vector<Node> &nodes, Eigen::VectorXd &displacement);
 

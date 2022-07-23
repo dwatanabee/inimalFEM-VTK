@@ -22,11 +22,9 @@ void Element::stiffnessMatrix(int ndim, int voigt, const MatrixXd &D,
     B.setZero();
     double jac = 0.0, weight = 0.0;
     bmatrixTri3(B, X, jac, weight, ip);
-    // cout << B << endl;
     for(int ip = 0; ip < ipmax; ip++)
       K += B.transpose() * D * B * jac * weight;
   }
-  cout << K << endl;
 
   VectorXi idof(numdof);
   for(int i = 0; i < ne; i++)
@@ -64,7 +62,7 @@ double Element::misesStress(int ndim, int voigt, const MatrixXd &D,
     B.setZero();
     double jac = 0.0, weight = 0.0;
     bmatrixTri3(B, X, jac, weight, ip);
-    sigma += D * B * disp;
+    sigma += D * B * disp / (double)(ipmax);
   }
 
   // Mises stress (2D)
