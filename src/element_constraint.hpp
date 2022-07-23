@@ -3,6 +3,7 @@
 #include <Eigen/Dense>
 #include <Eigen/IterativeLinearSolvers>
 #include <Eigen/Sparse>
+#include <iostream>
 #include <memory>
 
 // constraint class

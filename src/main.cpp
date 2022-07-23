@@ -72,23 +72,26 @@ int main(int argc, char *argv[])
     if(node[nodeID].dirich == nullptr)
     {
       shared_ptr<Dirichlet> dirich(new Dirichlet);
+      // x
       if(type == 1)
       {
         dirich->flag[0] = 1;
         dirich->flag[1] = 0;
         dirich->flag[2] = 0;
       }
+      // y
       else if(type == 2)
       {
         dirich->flag[0] = 0;
         dirich->flag[1] = 1;
         dirich->flag[2] = 0;
       }
+      // x & y
       else if(type == 3)
       {
-        dirich->flag[0] = 0;
-        dirich->flag[1] = 0;
-        dirich->flag[2] = 1;
+        dirich->flag[0] = 1;
+        dirich->flag[1] = 1;
+        dirich->flag[2] = 0;
       }
       else
       {
