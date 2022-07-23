@@ -39,7 +39,7 @@ int main(int argc, char *argv[])
   double poisson, young;
   infile >> poisson >> young;
   // set D matrix(plane stress)
-  MatrixXd De(3, 3);
+  MatrixXd De(voigt, voigt);
   De << 1.0, poisson, 0.0, poisson, //
       1.0, 0.0, 0.0,                //
       0.0, (1.0 - poisson) / 2.0;
@@ -128,7 +128,7 @@ int main(int argc, char *argv[])
 
   puts("fix matrix");
   applyConstraint(globalK, node, load);
-
+  cout << globalK << endl;
   puts("solve Ku=f");
   SimplicialLDLT<SparseMatrix<double>> solver;
   solver.compute(globalK);

@@ -91,5 +91,6 @@ void bmatrixTri3(Eigen::MatrixXd &B, Eigen::MatrixXd &X, double &jac,
     B(2, 2 * i + 0) = IC(2, i);
     B(2, 2 * i + 1) = IC(1, i);
   }
-  C.determinant();
+  jac = C.determinant();
+  weight = 0.5;
 }
