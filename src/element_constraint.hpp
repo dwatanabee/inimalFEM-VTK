@@ -41,5 +41,6 @@ public:
 };
 
 // Create a Bmatrix of triangular elements.
+// see 竹内則雄ら「計算力学」section 6.1.3
 void bmatrixTri3(Eigen::MatrixXd &B, Eigen::MatrixXd &X, double &jac,
                  double &weight, int ip);

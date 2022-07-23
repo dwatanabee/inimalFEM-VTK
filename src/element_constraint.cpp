@@ -13,19 +13,21 @@ void Element::stiffnessMatrix(int ndim, int voigt, const MatrixXd &D,
     for(int j = 0; j < ndim; j++)
       X(i, j) = nodes[nodeID[i]].x[j];
 
-  // make element stiffness matrix
   MatrixXd K(numdof, numdof);
   K.setZero();
+  // gauss loop
   for(int ip = 0; ip < ipmax; ip++)
   {
+    // get Bmatrix & jacobian & gauss weight
     Eigen::MatrixXd B(voigt, numdof);
     B.setZero();
     double jac = 0.0, weight = 0.0;
     bmatrixTri3(B, X, jac, weight, ip);
-    for(int ip = 0; ip < ipmax; ip++)
-      K += B.transpose() * D * B * jac * weight;
+
+    K += B.transpose() * D * B * jac * weight;
   }
 
+  // global dof's array
   VectorXi idof(numdof);
   for(int i = 0; i < ne; i++)
     for(int j = 0; j < ndim; j++)
@@ -78,6 +80,9 @@ void bmatrixTri3(Eigen::MatrixXd &B, Eigen::MatrixXd &X, double &jac,
   MatrixXd C(3, 3);
   VectorXd ones(3);
   ones.setOnes();
+  //    1  x1  y1
+  // C= 1  x2  y2
+  //    1  x3  y3
   C << ones, X;
 
   MatrixXd IC = C.inverse();
